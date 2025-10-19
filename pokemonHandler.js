@@ -27,7 +27,10 @@ function normalizeName(name) {
 }
 
 function extractPokemonName(content) {
-    let cleanContent = content
+    // Tomar solo el contenido de la primera línea para ignorar pings, IDs o textos secundarios.
+    let firstLineContent = content.split('\n')[0];
+
+    let cleanContent = firstLineContent
         .replace(/^(Poké-Name APP:)\s*/i, '')
         .replace(/:\s*\d{1,3}\.\d+%/g, '')
         .replace(/\[.*?\]/g, '')
